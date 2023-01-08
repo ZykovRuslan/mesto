@@ -1,0 +1,7 @@
+.elements__element {
+    max-width: 282px;
+    height: 361px;
+    background: url(../../../images/Rectangle.png);
+    background-color: white;
+    border-radius: 10px 10px 10px 10px;
+}

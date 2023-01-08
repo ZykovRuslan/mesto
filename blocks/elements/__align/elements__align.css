@@ -1,0 +1,8 @@
+.elements__align {
+    display: flex;
+    width: 246px;
+    height: 23px;
+    margin: 25px 15px 31px 21px;
+    justify-content: space-between;
+    align-items: center;
+}
