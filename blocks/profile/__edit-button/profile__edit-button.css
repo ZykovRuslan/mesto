@@ -9,7 +9,7 @@
     padding: 0;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 914px) {
     .profile__edit-button{
         margin-right: 19px;
         margin-top: 8px;

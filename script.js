@@ -17,7 +17,7 @@ function addProfile() {
   let jobInput = document.querySelector(".popup__about-me");
   nameInput.value = profileName.textContent;
   jobInput.value = profileAboutMe.textContent;
-  // console.log(nameInput.value);
+  //console.log(nameInput.value);
 }
 //реакция на действия пользователя (редактировать) посредством обрабочика события методом addEventListener
 //(click - тип события, addProfile - функция обработчик)
@@ -47,9 +47,9 @@ function handleFormSubmit(evt) {
   // О том, как это делать, расскажем позже.
 
   // Получите значение полей jobInput и nameInput из свойства value
-    //console.log(evt);
-    let job = jobInput.value;
-    let name = nameInput.value;
+  //console.log(evt);
+  let job = jobInput.value;
+  let name = nameInput.value;
   // Выберите элементы, куда должны быть вставлены значения полей
   profileName = document.querySelector(".profile__name");
   profileAboutMe = document.querySelector(".profile__about-me");
