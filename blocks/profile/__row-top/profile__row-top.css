@@ -1,11 +1,11 @@
 .profile__row-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 @media screen and (max-width: 620px) {
-    .profile__row-top{
-        width: 282px;
-    }
+  .profile__row-top {
+    width: 282px;
+  }
 }

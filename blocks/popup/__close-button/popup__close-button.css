@@ -1,20 +1,20 @@
 .popup__close-button {
-    width: 32px;
-    height: 32px;
-    background: url(../../../images/close-icon.svg);
-    padding: 0;
-    position: absolute;
-    top: -40px;
-    right: -40px;
-    border: none;
+  width: 32px;
+  height: 32px;
+  background: url(../../../images/close-icon.svg);
+  padding: 0;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  border: none;
 }
 
 @media screen and (max-width: 620px) {
-    .popup__close-button{
-        background-size: 20px 20px;
-        top: -36px;
-        right: 0;
-        width: 20px;
-        height: 20px;
-    }
+  .popup__close-button {
+    background-size: 20px 20px;
+    top: -36px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+  }
 }

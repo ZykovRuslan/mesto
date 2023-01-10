@@ -11,7 +11,6 @@
 <body class="page">
     <header class="header">
         <img src="images/logo.svg" class="header__logo" alt="Логотип Места России">
-        <div class="header__line"></div>
     </header>
 
     <main class="content">
@@ -21,71 +20,68 @@
                 <div class="profile__info">
                     <div class="profile__row-top">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button opacity"></button>
+                        <button class="profile__edit-button opacity" type="button"></button>
                     </div>
                     <p class="profile__about-me">Исследователь океана</p>
                 </div>
             </div>
-            <button class="profile__add-button opacity"></button>
+            <button class="profile__add-button opacity" type="button"></button>
         </section>
         <section aria-label="секция с картинками" class="elements">
             <div class="elements__element">
                 <img src="images/karachaevsk.jpg" class="elements__foto" alt="Карачаевск">
                 <div class="elements__align">
                     <p class="elements__text">Карачаевск</p>
-                    <button class="elements__like-button"></button>
+                    <button class="elements__like-button" type="button"></button>
                 </div>
             </div>
             <div class="elements__element">
                 <img src="images/mountain-Elbrus.jpg" class="elements__foto" alt="Гора Эльбрус">
                 <div class="elements__align">
                     <p class="elements__text">Гора Эльбрус</p>
-                    <button class="elements__like-button"></button>
+                    <button class="elements__like-button" type="button"></button>
                 </div>
             </div>
             <div class="elements__element">
                 <img src="images/Dombai.jpg" class="elements__foto" alt="Домбай">
                 <div class="elements__align">
                     <p class="elements__text">Домбай</p>
-                    <button class="elements__like-button"></button>
+                    <button class="elements__like-button" type="button"></button>
                 </div>
             </div>
             <div class="elements__element">
                 <img src="images/mountain-Altai.jpg" class="elements__foto" alt="Горный Алтай">
                 <div class="elements__align">
                     <p class="elements__text">Горный Алтай</p>
-                    <button class="elements__like-button"></button>
+                    <button class="elements__like-button" type="button"></button>
                 </div>
             </div>
             <div class="elements__element">
                 <img src="images/lakes-Karakol.jpg" class="elements__foto" alt="Озера Каракольские">
                 <div class="elements__align">
                     <p class="elements__text">Озера Каракольские</p>
-                    <button class="elements__like-button"></button>
+                    <button class="elements__like-button" type="button"></button>
                 </div>
             </div>
             <div class="elements__element">
                 <img src="images/red-glade.jpg" class="elements__foto" alt="Красная поляна">
                 <div class="elements__align">
                     <p class="elements__text">Красная поляна</p>
-                    <button class="elements__like-button"></button>
+                    <button class="elements__like-button" type="button"></button>
                 </div>
             </div>
         </section>
         <section class="popup">
-            <div class="popup__background"></div>
-            <form class="popup__container">
+            <form class="popup__container" name="form-popup">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <div class="popup__field-one">
-                    <input class="popup__name">
-                    <div class="popup__line"></div>
+                    <input class="popup__input popup__input_data_name" name="input-name">
                 </div>
                 <div class="popup__field-two">
-                    <input class="popup__about-me">
-                    <div class="popup__line"></div>
+                    <input class="popup__input popup__input_data_job" name="input-job">
                 </div>
                 <button class="popup__submit-button" type="submit"><span class="popup__text">Сохранить</span></button>
-                <button class="popup__close-button opacity"></button>
+                <button class="popup__close-button opacity" type="button"></button>
             </form>
         </section>
     </main>
@@ -93,7 +89,7 @@
         <p class="footer__copyright">&#169; 2020. Mesto Russia</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>

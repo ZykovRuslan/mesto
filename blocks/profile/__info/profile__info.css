@@ -1,18 +1,18 @@
 .profile__info {
-    width: 336px;
-    margin-top: 22px;
-    display: flex;
-    flex-direction: column;
+  width: 336px;
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 914px) {
-    .profile__info{
-        width: 282px;
-    }
+  .profile__info {
+    width: 282px;
+  }
 }
 
 @media screen and (max-width: 620px) {
-    .profile__info{
-        margin-top: 0;
-    }
+  .profile__info {
+    margin-top: 0;
+  }
 }

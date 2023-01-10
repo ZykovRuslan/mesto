@@ -1,23 +1,23 @@
 .profile {
-    max-width: 880px;
-    height: 120px;
-    margin: 0 auto 51px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 880px;
+  height: 120px;
+  margin: 0 auto 51px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media screen and (max-width: 914px) {
-    .profile{
-        max-width: 580px;
-    }
+  .profile {
+    max-width: 580px;
+  }
 }
 
 @media screen and (max-width: 620px) {
-    .profile{
-        max-width: 282px;
-        min-height: 286px;
-        flex-direction: column;
-        margin-bottom: 36px;
-    }
+  .profile {
+    max-width: 282px;
+    min-height: 286px;
+    flex-direction: column;
+    margin-bottom: 36px;
+  }
 }

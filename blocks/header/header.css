@@ -1,22 +1,23 @@
 .header {
-    max-width: 880px;
-    height: 74px;
-    margin: 45px auto 36.25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  max-width: 880px;
+  height: 74px;
+  margin: 45px auto 36.25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
 @media screen and (max-width: 914px) {
-    .header{
-        max-width: 580px;
-    }
+  .header {
+    max-width: 580px;
+  }
 }
 
 @media screen and (max-width: 620px) {
-    .header{
-        max-width: 320px;
-        height: 56px;
-        margin: 28px auto 38.25px;
-    }
+  .header {
+    max-width: 320px;
+    height: 56px;
+    margin: 28px auto 38.25px;
+  }
 }
