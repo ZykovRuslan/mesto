@@ -23,15 +23,23 @@ function addProfile() {
 //(click - тип события, addProfile - функция обработчик)
 editButton.addEventListener("click", addProfile);
 
-//ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ВСПЛЫВАЮЩЕГО ОКНА
-function closeProfile() {
+//ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ВСПЛЫВАЮЩЕГО ОКНА ПО КНОПКЕ "СОХРАНИТЬ"
+function saveProfile() {
   //Для переменной popup используем удаление класса элементу через метод .classList.remove как аргумент передаем методу класс 'popup_opened'
   popup.classList.remove("popup_opened");
 }
-//реакция на действия пользователя (редактировать) посредством обрабочика события методом addEventListener
-//(click - тип события, closeProfile - функция обработчик)
+submitButton.addEventListener("click", saveProfile);
+
+//ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ВСПЛЫВАЮЩЕГО ОКНА ПО КНОПКЕ "ЗАКРЫТЬ"
+function closeProfile() {
+  //Для переменной popup используем удаление класса элементу через метод .classList.remove как аргумент передаем методу класс 'popup_opened'
+  popup.classList.remove("popup_opened");
+  let nameInput = document.querySelector(".popup__name");
+  let jobInput = document.querySelector(".popup__about-me");
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileAboutMe.textContent;
+}
 closeButton.addEventListener("click", closeProfile);
-submitButton.addEventListener("click", closeProfile);
 
 //КАСАЕТСЯ КНОПКИ СОХРАНИТЬ
 // Находим форму в DOM
