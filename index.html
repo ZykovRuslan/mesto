@@ -21,12 +21,12 @@
                 <div class="profile__info">
                     <div class="profile__row-top">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button"></button>
+                        <button class="profile__edit-button opacity"></button>
                     </div>
                     <p class="profile__about-me">Исследователь океана</p>
                 </div>
             </div>
-            <button class="profile__add-button"></button>
+            <button class="profile__add-button opacity"></button>
         </section>
         <section aria-label="секция с картинками" class="elements">
             <div class="elements__element">
@@ -72,11 +72,28 @@
                 </div>
             </div>
         </section>
+        <section class="popup">
+            <div class="popup__background"></div>
+            <form class="popup__container">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <div class="popup__field-one">
+                    <input class="popup__name">
+                    <div class="popup__line"></div>
+                </div>
+                <div class="popup__field-two">
+                    <input class="popup__about-me">
+                    <div class="popup__line"></div>
+                </div>
+                <button class="popup__submit-button" type="submit"><span class="popup__text">Сохранить</span></button>
+                <button class="popup__close-button opacity"></button>
+            </form>
+        </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&#169; 2020. Mesto Russia</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 
 </html>

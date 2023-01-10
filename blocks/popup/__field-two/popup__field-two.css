@@ -1,0 +1,16 @@
+.popup__field-two {
+    width: 358px;
+    height: 27px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 620px) {
+    .popup__field-two{
+        width: 238px;
+        height: 27px;
+        margin-bottom: 45px;
+    }
+}

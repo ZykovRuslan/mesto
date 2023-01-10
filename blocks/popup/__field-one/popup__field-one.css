@@ -1,0 +1,15 @@
+.popup__field-one {
+    width: 358px;
+    height: 27px;
+    margin: 0 auto 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 620px) {
+    .popup__field-one{
+        width: 238px;
+        height: 27px;
+    }
+}

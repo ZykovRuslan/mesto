@@ -10,3 +10,7 @@
     padding: 0;
     box-sizing: content-box;
 }
+
+.elements__like-button:hover {
+    opacity: 0.5;
+}
