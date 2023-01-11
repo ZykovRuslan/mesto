@@ -2,8 +2,8 @@
   min-width: 320px;
   max-width: 1280px;
   margin: 0 auto;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #000;
+  color: #fff;
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -12,7 +12,3 @@
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
 }
-
-/* * {
-    outline: 1px solid #f00 !important;
-  }   */
