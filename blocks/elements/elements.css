@@ -3,7 +3,7 @@
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   column-gap: 17px;
-  row-gap: 20px;
+  row-gap: 15px;
   margin: 0 auto 67px;
   max-width: 880px;
 }
@@ -19,6 +19,6 @@
   .elements {
     max-width: 282px;
     grid-template-columns: repeat(1, 1fr);
-    margin-bottom: 48px;
+    margin-bottom: 40px;
   }
 }

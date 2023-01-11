@@ -21,6 +21,6 @@
 @media screen and (max-width: 620px) {
   .profile__about-me {
     align-self: center;
-    padding-bottom: 36px;
+    padding-bottom: 32px;
   }
 }
