@@ -1,4 +1,4 @@
-.elements__like-button {
+.card__like-button {
   min-width: 22px;
   height: 19px;
   border: none;
@@ -9,7 +9,7 @@
   box-sizing: content-box;
 }
 
-.elements__like-button:hover {
+.card__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
 }

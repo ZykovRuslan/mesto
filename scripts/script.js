@@ -6,8 +6,8 @@ let editButton = document.querySelector('.profile__edit-button');
 let profileName = document.querySelector('.profile__name');
 let profileAboutMe = document.querySelector('.profile__about-me');
 let formElement = document.querySelector('.popup__container');
-let nameInput = document.querySelector('.popup__input_data_name');
-let jobInput = document.querySelector('.popup__input_data_job');
+let nameInput = formElement.querySelector('.popup__input_data_name');
+let jobInput = formElement.querySelector('.popup__input_data_job');
 
 //ФУНКЦИЯ ДЛЯ ВЫЗОВА ВСПЛЫВАЮЩЕГО ОКНА
 function openPopup() {
@@ -47,5 +47,4 @@ formElement.addEventListener('submit', handleFormSubmit);
 //реакция на действия пользователя (редактировать) посредством обрабочика события методом addEventListener
 //(click - тип события, openPopup - функция обработчик)
 editButton.addEventListener('click', openPopup);
-formElement.addEventListener('submit', closePopup);
 closeButton.addEventListener('click', closePopup);

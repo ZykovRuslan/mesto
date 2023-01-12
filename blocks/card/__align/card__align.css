@@ -1,7 +1,7 @@
-.elements__align {
+.card__align {
   display: flex;
   width: 246px;
-  margin: 25px 15px 31px 21px;
+  margin: 22px 15px 25px 21px;
   justify-content: space-between;
   align-items: center;
 }

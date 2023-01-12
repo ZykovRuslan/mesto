@@ -7,6 +7,8 @@
   border: none;
   margin: 48px 36px 37px 36px;
   padding: 0;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 @media screen and (max-width: 620px) {
@@ -14,6 +16,8 @@
     width: 238px;
     height: 46px;
     margin: 45px 22px 25px 22px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
 
