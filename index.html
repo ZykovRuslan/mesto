@@ -2,92 +2,93 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pages/index.css">
-    <title>Места России</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Места России</title>
 </head>
 
 <body class="page">
-    <header class="header">
-        <img src="images/logo.svg" class="header__logo" alt="Логотип Места России">
-    </header>
+  <header class="header">
+    <img src="./images/logo.svg" class="header__logo" alt="Логотип Места России">
+  </header>
 
-    <main class="content">
-        <section class="profile">
-            <div class="profile__align">
-                <img src="images/avatar.jpg" class="profile__avatar" alt="Аватар">
-                <div class="profile__info">
-                    <div class="profile__row-top">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button opacity" aria-label="редактирование профиля"
-                            type="button"></button>
-                    </div>
-                    <p class="profile__about-me">Исследователь океана</p>
-                </div>
-            </div>
-            <button class="profile__add-button opacity" aria-label="добавление фотографии" type="button"></button>
-        </section>
-        <section aria-label="секция с картинками" class="elements">
-            <article class="card">
-                <img src="images/karachaevsk.jpg" class="card__foto" alt="Карачаевск">
-                <div class="card__align">
-                    <h2 class="card__title">Карачаевск</h2>
-                    <button class="card__like-button" aria-label="нравится" type="button"></button>
-                </div>
-            </article>
-            <article class="card">
-                <img src="images/mountain-Elbrus.jpg" class="card__foto" alt="Гора Эльбрус">
-                <div class="card__align">
-                    <h2 class="card__title">Гора Эльбрус</h2>
-                    <button class="card__like-button" aria-label="нравится" type="button"></button>
-                </div>
-            </article>
-            <article class="card">
-                <img src="images/Dombai.jpg" class="card__foto" alt="Домбай">
-                <div class="card__align">
-                    <h2 class="card__title">Домбай</h2>
-                    <button class="card__like-button" aria-label="нравится" type="button"></button>
-                </div>
-            </article>
-            <article class="card">
-                <img src="images/mountain-Altai.jpg" class="card__foto" alt="Горный Алтай">
-                <div class="card__align">
-                    <h2 class="card__title">Горный Алтай</h2>
-                    <button class="card__like-button" aria-label="нравится" type="button"></button>
-                </div>
-            </article>
-            <article class="card">
-                <img src="images/lakes-Karakol.jpg" class="card__foto" alt="Озера Каракольские">
-                <div class="card__align">
-                    <h2 class="card__title">Озера Каракольские</h2>
-                    <button class="card__like-button" aria-label="нравится" type="button"></button>
-                </div>
-            </article>
-            <article class="card">
-                <img src="images/red-glade.jpg" class="card__foto" alt="Красная поляна">
-                <div class="card__align">
-                    <h2 class="card__title">Красная поляна</h2>
-                    <button class="card__like-button" aria-label="нравится" type="button"></button>
-                </div>
-            </article>
-        </section>
-    </main>
-    <footer class="footer">
-        <p class="footer__copyright">&#169; 2020. Mesto Russia</p>
-    </footer>
-    <div class="popup">
-        <div class="popup__container">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <form name="form-popup">
-                <input type="text" required class="popup__input popup__input_data_name" placeholder="Имя профиля" name="input-name">
-                <input type="text" required class="popup__input popup__input_data_job" placeholder="Вид деятельности" name="input-job">
-                <button class="popup__submit-button" aria-label="сохранить" type="submit">Сохранить</button>
-            </form>
-            <button class="popup__close-button opacity" aria-label="закрыть" type="button"></button>
+  <main class="content">
+    <section class="profile">
+      <div class="profile__align">
+        <img src="images/avatar.jpg" class="profile__avatar" alt="Аватар">
+        <div class="profile__info">
+          <div class="profile__row-top">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button opacity" aria-label="редактирование профиля" type="button"></button>
+          </div>
+          <p class="profile__about-me">Исследователь океана</p>
         </div>
+      </div>
+      <button class="profile__add-button opacity" aria-label="добавление фотографии" type="button"></button>
+    </section>
+    <section aria-label="секция с картинками" class="elements">
+      <article class="card">
+        <img src="./images/karachaevsk.jpg" class="card__foto" alt="Карачаевск">
+        <div class="card__align">
+          <h2 class="card__title">Карачаевск</h2>
+          <button class="card__like-button" aria-label="нравится" type="button"></button>
+        </div>
+      </article>
+      <article class="card">
+        <img src="./images/mountain-Elbrus.jpg" class="card__foto" alt="Гора Эльбрус">
+        <div class="card__align">
+          <h2 class="card__title">Гора Эльбрус</h2>
+          <button class="card__like-button" aria-label="нравится" type="button"></button>
+        </div>
+      </article>
+      <article class="card">
+        <img src="./images/Dombai.jpg" class="card__foto" alt="Домбай">
+        <div class="card__align">
+          <h2 class="card__title">Домбай</h2>
+          <button class="card__like-button" aria-label="нравится" type="button"></button>
+        </div>
+      </article>
+      <article class="card">
+        <img src="./images/mountain-Altai.jpg" class="card__foto" alt="Горный Алтай">
+        <div class="card__align">
+          <h2 class="card__title">Горный Алтай</h2>
+          <button class="card__like-button" aria-label="нравится" type="button"></button>
+        </div>
+      </article>
+      <article class="card">
+        <img src="./images/lakes-Karakol.jpg" class="card__foto" alt="Озера Каракольские">
+        <div class="card__align">
+          <h2 class="card__title">Озера Каракольские</h2>
+          <button class="card__like-button" aria-label="нравится" type="button"></button>
+        </div>
+      </article>
+      <article class="card">
+        <img src="./images/red-glade.jpg" class="card__foto" alt="Красная поляна">
+        <div class="card__align">
+          <h2 class="card__title">Красная поляна</h2>
+          <button class="card__like-button" aria-label="нравится" type="button"></button>
+        </div>
+      </article>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&#169; 2020. Mesto Russia</p>
+  </footer>
+  <div class="popup">
+    <div class="popup__container">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form name="form-popup">
+        <input type="text" required class="popup__input popup__input_data_name" placeholder="Имя профиля"
+          name="input-name">
+        <input type="text" required class="popup__input popup__input_data_job" placeholder="Вид деятельности"
+          name="input-job">
+        <button class="popup__submit-button" aria-label="сохранить" type="submit">Сохранить</button>
+      </form>
+      <button class="popup__close-button opacity" aria-label="закрыть" type="button"></button>
     </div>
-    <script src="scripts/script.js"></script>
+  </div>
+  <script src="./scripts/script.js"></script>
 </body>
 
 </html>
