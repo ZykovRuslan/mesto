@@ -31,8 +31,8 @@ function handleFormSubmit(evt) {
   // О том, как это делать, расскажем позже.
 
   // Получите значение полей jobInput и nameInput из свойства value
-  let job = jobInput.value;
-  let name = nameInput.value;
+  let job = jobInput.value; //нет необходимости прописывать новую переменную
+  let name = nameInput.value; //нет необходимости прописывать новую переменную
 
   // Вставьте новые значения с помощью textContent
   profileName.textContent = name;
