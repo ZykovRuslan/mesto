@@ -1,4 +1,4 @@
-.elements {
+.galery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
@@ -9,14 +9,14 @@
 }
 
 @media screen and (max-width: 914px) {
-  .elements {
+  .galery {
     max-width: 500px;
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 620px) {
-  .elements {
+  .galery {
     max-width: 282px;
     grid-template-columns: repeat(1, 1fr);
     margin-bottom: 50px;
