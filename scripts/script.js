@@ -4,23 +4,22 @@ const editProfileButton = document.querySelector('.profile__edit-button');
 const addNewCardButton = document.querySelector('.profile__add-button');
 const profileName = document.querySelector('.profile__name');
 const profileAboutMe = document.querySelector('.profile__about-me');
+const closeButtons = document.querySelectorAll('.popup__close-button'); //все крестики проектаы
 //Переменные попапа для редактирования профиля
 const popupEdit = document.querySelector('.popup_type_edit');
 const formElementEdit = document.querySelector('.popup__container_type_edit');
 const nameInput = formElementEdit.querySelector('.popup__input_data_name');
 const jobInput = formElementEdit.querySelector('.popup__input_data_job');
-const closeButtonEdit = document.querySelector('.popup__close-button_type_edit');
 //Переменные попапа для добавление новых карточек
+const cardTemplate = document.querySelector('.card-template').content;
 const popupAdd = document.querySelector('.popup_type_add');
 const formElementAdd = document.querySelector('.popup__container_type_add');
 const titleInput = formElementAdd.querySelector('.popup__input_data_title');
 const photoInput = formElementAdd.querySelector('.popup__input_data_photo');
-const closeButtonAdd = document.querySelector('.popup__close-button_type_add');
 //Переменные попапа для открытия фото
 const popupCardPhoto = document.querySelector('.popup_type_photo');
 const popupPhoto = popupCardPhoto.querySelector('.popup__photo');
 const popupSubtitle = popupCardPhoto.querySelector('.popup__subtitle');
-const popupCloseButtonPhoto = popupCardPhoto.querySelector('.popup__close-button_type_photo');
 
 //ФУНКЦИЯ ДЛЯ ОТКРЫТИЯ ВСПЛЫВАЮЩЕГО ОКНА
 function openPopup(popupElement) {
@@ -40,24 +39,50 @@ function handleFormSubmitEditProfile(evt) {
   closePopup(popupEdit);
 }
 
-//ФУНКЦИЯ ДЛЯ ОТПРАВКИ ДАННЫХ ПО КНОПКЕ СОХРАНИТЬ ПРИ ДОБАВЛЕНИИ НОВОЙ КАРТОЧКИ
-function handleFormSubmitAddNewCard(evt) {
-  evt.preventDefault();
-  addNewCard();
-  closePopup(popupAdd);
-  photoInput.value = '';
-  titleInput.value = '';
-}
-
-//ФУНКЦИЯ ДЛЯ ДОБАВЛЕНИЯ НОВОЙ КАРТОЧКИ
-function addNewCard() {
-  const cardTemplate = document.querySelector('.card-template').content;
+//ФУНКЦИЯ ДЛЯ СОЗДАНИЯ НОВОЙ КАРТОЧКИ
+function createCard() {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   cardElement.querySelector('.card__photo').src = photoInput.value;
   cardElement.querySelector('.card__photo').alt = titleInput.value;
   cardElement.querySelector('.card__title').textContent = titleInput.value;
-  galery.prepend(cardElement);
+  return cardElement;
 }
+
+//ФУНКЦИЯ ДЛЯ ВИЗУАЛИЗАЦИИ НОВОЙ КАРТОЧКИ
+function renderCard() {
+  galery.prepend(createCard());
+}
+
+//ФУНКЦИЯ ДЛЯ ОТПРАВКИ ДАННЫХ ПО КНОПКЕ СОХРАНИТЬ ПРИ ДОБАВЛЕНИИ НОВОЙ КАРТОЧКИ
+function handleFormSubmitAddNewCard(evt) {
+  evt.preventDefault();
+  renderCard();
+  closePopup(popupAdd);
+  evt.target.reset();
+}
+
+//ФУНКЦИЯ ДЛЯ СОЗДАНИЯ НОВЫХ КАРТОЧЕК ИЗ МАССИВА
+function createCardArray() {
+  const initialCardsNew = [];
+  for (let i = 0; i < initialCards.length; i++) {
+    const initialCardsElement = cardTemplate.querySelector('.card').cloneNode(true); //клонируем содержание template
+    initialCardsElement.querySelector('.card__photo').src = initialCards[i].link; //заполняем значение <img src="">
+    initialCardsElement.querySelector('.card__photo').alt = initialCards[i].name; //заполняем значение <img alt="">
+    initialCardsElement.querySelector('.card__title').textContent = initialCards[i].name; //заполняем значение <h2>
+    initialCardsNew.push(initialCardsElement);
+  }
+  return initialCardsNew;
+}
+
+//ФУНКЦИЯ ДЛЯ ВИЗУАЛИЗАЦИИ НОВЫХ КАРТОЧЕК ИЗ МАССИВА
+function renderCardArray() {
+  const cards = createCardArray();
+  cards.forEach(function (card) {
+    galery.append(card);
+  });
+}
+
+renderCardArray();
 
 //ФУНКЦИЯ ДЛЯ УДАЛЕНИЯ КАРТОЧКИ
 function deleteCard(evt) {
@@ -97,6 +122,14 @@ function handleClickCard(evt) {
   }
 }
 
+//ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ПОПАПОВ ПО ESC
+document.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened'); //нашли открытый попап
+    closePopup(openedPopup);
+  }
+});
+
 editProfileButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAboutMe.textContent;
@@ -104,46 +137,20 @@ editProfileButton.addEventListener('click', function () {
 });
 
 addNewCardButton.addEventListener('click', function () {
+  photoInput.value = '';
+  titleInput.value = '';
   openPopup(popupAdd);
 });
 
-closeButtonEdit.addEventListener('click', function () {
-  closePopup(popupEdit);
-});
-
-closeButtonAdd.addEventListener('click', function () {
-  closePopup(popupAdd);
-  photoInput.value = '';
-  titleInput.value = '';
-});
-
-popupCloseButtonPhoto.addEventListener('click', function () {
-  closePopup(popupCardPhoto);
+closeButtons.forEach(function (button) {
+  const popup = button.closest('.popup'); // находим 1 раз ближайший к крестику попап
+  button.addEventListener('click', function () {
+    closePopup(popup);
+  });
 });
 
 formElementEdit.addEventListener('submit', handleFormSubmitEditProfile);
 
 formElementAdd.addEventListener('submit', handleFormSubmitAddNewCard);
 
-galery.addEventListener('click', handleClickCard); 
-
-//добавление карточек в галерею из массива initalCards
-initialCards.forEach(function (element) { 
-  const cardTemplate = document.querySelector('.card-template').content;
-  const initialCardsElement = cardTemplate.querySelector('.card').cloneNode(true); //клонируем содержание template
-  initialCardsElement.querySelector('.card__photo').src = element.link; //заполняем значение <img src="">
-  initialCardsElement.querySelector('.card__photo').alt = element.name; //заполняем значение <img alt="">
-  initialCardsElement.querySelector('.card__title').textContent = element.name; //заполняем значение <h2>
-  galery.append(initialCardsElement); //добавляем содержимое в конец галерии
-});
-
-//ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ПОПАПОВ ПО ESC
-document.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Escape') {
-    closePopup(popupCardPhoto);
-    closePopup(popupEdit);
-    closePopup(popupAdd);
-    photoInput.value = '';
-    titleInput.value = '';
-  }
-});
+galery.addEventListener('click', handleClickCard);
