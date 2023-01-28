@@ -43,7 +43,7 @@ function handleFormSubmitEditProfile(evt) {
 function createCard(name, link) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   cardElement.querySelector('.card__photo').src = link;
-  cardElement.querySelector('.card__photo').alt = link;
+  cardElement.querySelector('.card__photo').alt = name;
   cardElement.querySelector('.card__title').textContent = name;
   return cardElement;
 }
