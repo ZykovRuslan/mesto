@@ -40,17 +40,20 @@ function handleFormSubmitEditProfile(evt) {
 }
 
 //ФУНКЦИЯ ДЛЯ СОЗДАНИЯ НОВОЙ КАРТОЧКИ
-function createCard() {
+function createCard(name, link) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-  cardElement.querySelector('.card__photo').src = photoInput.value;
-  cardElement.querySelector('.card__photo').alt = titleInput.value;
-  cardElement.querySelector('.card__title').textContent = titleInput.value;
+  cardElement.querySelector('.card__photo').src = link;
+  cardElement.querySelector('.card__photo').alt = link;
+  cardElement.querySelector('.card__title').textContent = name;
   return cardElement;
 }
 
 //ФУНКЦИЯ ДЛЯ ВИЗУАЛИЗАЦИИ НОВОЙ КАРТОЧКИ
 function renderCard() {
-  galery.prepend(createCard());
+  const name = titleInput.value;
+  const link = photoInput.value;
+  const card = createCard(name, link);
+  galery.prepend(card);
 }
 
 //ФУНКЦИЯ ДЛЯ ОТПРАВКИ ДАННЫХ ПО КНОПКЕ СОХРАНИТЬ ПРИ ДОБАВЛЕНИИ НОВОЙ КАРТОЧКИ
@@ -61,25 +64,14 @@ function handleFormSubmitAddNewCard(evt) {
   evt.target.reset();
 }
 
-//ФУНКЦИЯ ДЛЯ СОЗДАНИЯ НОВЫХ КАРТОЧЕК ИЗ МАССИВА
-function createCardArray() {
-  const initialCardsNew = [];
-  for (let i = 0; i < initialCards.length; i++) {
-    const initialCardsElement = cardTemplate.querySelector('.card').cloneNode(true); //клонируем содержание template
-    initialCardsElement.querySelector('.card__photo').src = initialCards[i].link; //заполняем значение <img src="">
-    initialCardsElement.querySelector('.card__photo').alt = initialCards[i].name; //заполняем значение <img alt="">
-    initialCardsElement.querySelector('.card__title').textContent = initialCards[i].name; //заполняем значение <h2>
-    initialCardsNew.push(initialCardsElement);
-  }
-  return initialCardsNew;
-}
-
 //ФУНКЦИЯ ДЛЯ ВИЗУАЛИЗАЦИИ НОВЫХ КАРТОЧЕК ИЗ МАССИВА
 function renderCardArray() {
-  const cards = createCardArray();
-  cards.forEach(function (card) {
+    initialCards.forEach(function (initialCard) {
+      const name = initialCard.name;
+      const link = initialCard.link;
+      const card = createCard(name, link);
     galery.append(card);
-  });
+  })
 }
 
 renderCardArray();
