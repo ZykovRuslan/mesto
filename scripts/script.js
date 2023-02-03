@@ -4,7 +4,7 @@ const editProfileButton = document.querySelector('.profile__edit-button');
 const addNewCardButton = document.querySelector('.profile__add-button');
 const profileName = document.querySelector('.profile__name');
 const profileAboutMe = document.querySelector('.profile__about-me');
-const closeButtons = document.querySelectorAll('.popup__close-button'); //все крестики проектаы
+const closeButtons = document.querySelectorAll('.popup__close-button'); // todo: все крестики проекта
 //Переменные попапа для редактирования профиля
 const popupEdit = document.querySelector('.popup_type_edit');
 const formElementEdit = document.querySelector('.popup__container_type_edit');
@@ -33,7 +33,7 @@ function closePopup(popupElement) {
 
 //ФУНКЦИЯ ДЛЯ ОТПРАВКИ ДАННЫХ ПО КНОПКЕ СОХРАНИТЬ ПРИ ИЗМЕНЕНИИ ПРОФИЛЯ
 function handleFormSubmitEditProfile(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы. Так мы можем определить свою логику отправки.
+  evt.preventDefault(); // todo: эта строчка отменяет стандартную отправку формы. Так мы можем определить свою логику отправки
   profileName.textContent = nameInput.value;
   profileAboutMe.textContent = jobInput.value;
   closePopup(popupEdit);
@@ -66,12 +66,12 @@ function handleFormSubmitAddNewCard(evt) {
 
 //ФУНКЦИЯ ДЛЯ ВИЗУАЛИЗАЦИИ НОВЫХ КАРТОЧЕК ИЗ МАССИВА
 function renderCardArray() {
-    initialCards.forEach(function (initialCard) {
-      const name = initialCard.name;
-      const link = initialCard.link;
-      const card = createCard(name, link);
+  initialCards.forEach(function (initialCard) {
+    const name = initialCard.name;
+    const link = initialCard.link;
+    const card = createCard(name, link);
     galery.append(card);
-  })
+  });
 }
 
 renderCardArray();
@@ -117,7 +117,7 @@ function handleClickCard(evt) {
 //ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ПОПАПОВ ПО ESC
 document.addEventListener('keydown', function (evt) {
   if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened'); //нашли открытый попап
+    const openedPopup = document.querySelector('.popup_opened'); // todo: нашли открытый попап
     closePopup(openedPopup);
   }
 });
@@ -135,7 +135,7 @@ addNewCardButton.addEventListener('click', function () {
 });
 
 closeButtons.forEach(function (button) {
-  const popup = button.closest('.popup'); // находим 1 раз ближайший к крестику попап
+  const popup = button.closest('.popup'); // todo: находим 1 раз ближайший к крестику попап
   button.addEventListener('click', function () {
     closePopup(popup);
   });
