@@ -114,13 +114,28 @@ function handleClickCard(evt) {
   }
 }
 
-//ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ПОПАПОВ ПО ESC
+//ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ПОПАПОВ ПО КНОПКЕ ESC
+function closePopupByClickEsq(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened'); // todo: нашли открытый попап
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
+  }
+}
+
+document.addEventListener('keydown', closePopupByClickEsq);
+
+/*
 document.addEventListener('keydown', function (evt) {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened'); // todo: нашли открытый попап
-    closePopup(openedPopup);
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
   }
 });
+*/
 
 editProfileButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
