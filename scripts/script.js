@@ -24,11 +24,14 @@ const popupSubtitle = popupCardPhoto.querySelector('.popup__subtitle');
 //ФУНКЦИЯ ДЛЯ ОТКРЫТИЯ ВСПЛЫВАЮЩЕГО ОКНА
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
+  enableValidation();
+  document.addEventListener('keydown', closePopupByClickEsq);
 }
 
 //ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ВСПЛЫВАЮЩЕГО ОКНА
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByClickEsq);
   const closePopupDeleteValid = Array.from(popupElement.querySelectorAll(config.inputSelector));
   closePopupDeleteValid.forEach(function (item) {
     hideInputError(popupElement, item);
@@ -139,8 +142,6 @@ function closePopupByClickOutPopup(evt) {
 }
 
 document.addEventListener('mousedown', closePopupByClickOutPopup);
-
-document.addEventListener('keydown', closePopupByClickEsq);
 
 editProfileButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
