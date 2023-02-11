@@ -38,12 +38,20 @@
   <div class="popup popup_type_edit">
     <div class="popup__container popup__container_type_edit">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form name="form-popup">
-        <input type="text" required class="popup__input popup__input_data_name" placeholder="Имя профиля"
-          name="input-name">
-        <input type="text" required class="popup__input popup__input_data_job" placeholder="Вид деятельности"
-          name="input-job">
-        <button class="popup__submit-button" aria-label="сохранить" type="submit">Сохранить</button>
+      <form class="popup__form" name="popup-form-edit-profile" novalidate>
+        <fieldset class="popup__set">
+          <label class="popup__field">
+            <input type="text" required class="popup__input popup__input_data_name" placeholder="Имя профиля"
+              name="input-name" id="name-input" minlength="2" maxlength="40">
+            <span class="popup__input-error name-input-error"></span>
+          </label>
+          <label class="popup__field">
+            <input type="text" required class="popup__input popup__input_data_job" placeholder="Вид деятельности"
+              name="input-job" id="job-input" minlength="2" maxlength="200">
+            <span class="popup__input-error job-input-error"></span>
+          </label>
+          <button class="popup__submit-button" aria-label="сохранить" type="submit">Сохранить</button>
+        </fieldset>
       </form>
       <button class="popup__close-button opacity" aria-label="закрыть" type="button"></button>
     </div>
@@ -53,12 +61,20 @@
   <div class="popup popup_type_add">
     <div class="popup__container popup__container_type_add">
       <h2 class="popup__title">Новое место</h2>
-      <form name="form-popup">
-        <input type="text" required class="popup__input popup__input_data_title" placeholder="Название"
-          name="input-title">
-        <input type="url" required class="popup__input popup__input_data_photo" placeholder="Ссылка на картинку"
-          name="input-photo">
-        <button class="popup__submit-button" aria-label="сохранить" type="submit">Сохранить</button>
+      <form class="popup__form" name="popup-form-add-new-card" novalidate>
+        <fieldset class="popup__set">
+          <label class="popup__field">
+            <input type="text" required class="popup__input popup__input_data_title" placeholder="Название"
+              name="input-title" id="title-input" minlength="2" maxlength="30">
+            <span class="popup__input-error title-input-error"></span>
+          </label>
+          <label class="popup__field">
+            <input type="url" required class="popup__input popup__input_data_photo" placeholder="Ссылка на картинку"
+              name="input-photo" id="url-input">
+            <span class="popup__input-error url-input-error"></span>
+          </label>
+          <button class="popup__submit-button" aria-label="сохранить" type="submit">Сохранить</button>
+        </fieldset>
       </form>
       <button class="popup__close-button opacity" aria-label="закрыть" type="button"></button>
     </div>
@@ -84,8 +100,8 @@
       </div>
     </article>
   </template>
-
-  <script type="module" src="./scripts/script.js"></script>
+  <script defer src="./scripts/validate.js"></script>
+  <script defer type="module" src="./scripts/script.js"></script>
 </body>
 
 </html>

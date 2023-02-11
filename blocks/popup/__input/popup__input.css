@@ -5,15 +5,11 @@
   font-size: 14px;
   line-height: 17px;
   color: #000;
-  margin: 0 auto 30px;
+  margin: 0 auto;
   padding: 0;
   padding-bottom: 13px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.popup__input:last-of-type {
-  margin-bottom: 0;
 }
 
 @media screen and (max-width: 620px) {

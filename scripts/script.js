@@ -29,6 +29,10 @@ function openPopup(popupElement) {
 //ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ВСПЛЫВАЮЩЕГО ОКНА
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
+  const closePopupDeleteValid = Array.from(popupElement.querySelectorAll(config.inputSelector));
+  closePopupDeleteValid.forEach(function (item) {
+    hideInputError(popupElement, item);
+  });
 }
 
 //ФУНКЦИЯ ДЛЯ ОТПРАВКИ ДАННЫХ ПО КНОПКЕ СОХРАНИТЬ ПРИ ИЗМЕНЕНИИ ПРОФИЛЯ
@@ -116,26 +120,27 @@ function handleClickCard(evt) {
 
 //ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ПОПАПОВ ПО КНОПКЕ ESC
 function closePopupByClickEsq(evt) {
+  const openedPopup = document.querySelector('.popup_opened'); // todo: нашли открытый попап
   if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened'); // todo: нашли открытый попап
     if (openedPopup) {
       closePopup(openedPopup);
     }
   }
 }
 
-document.addEventListener('keydown', closePopupByClickEsq);
-
-/*
-document.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened'); // todo: нашли открытый попап
+//ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ПОПАПОВ ПРИ КЛИКЕ ВНЕ ОКНА
+function closePopupByClickOutPopup(evt) {
+  const openedPopup = document.querySelector('.popup_opened'); // todo: нашли открытый попап
+  if (evt.target === openedPopup) {
     if (openedPopup) {
       closePopup(openedPopup);
     }
   }
-});
-*/
+}
+
+document.addEventListener('mousedown', closePopupByClickOutPopup);
+
+document.addEventListener('keydown', closePopupByClickEsq);
 
 editProfileButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
