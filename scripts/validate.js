@@ -47,7 +47,7 @@ const setEventListeners = (formElement) => {
 };
 
 //функция включения проверки
-const enableValidation = () => {
+const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
@@ -58,7 +58,7 @@ const enableValidation = () => {
   });
 };
 
-enableValidation();
+enableValidation(config);
 
 function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => {
@@ -74,4 +74,13 @@ function toggleButtonState(inputList, buttonElement) {
     buttonElement.classList.remove(config.inactiveButtonClass);
     buttonElement.disabled = false;
   }
+}
+
+//Удаление ошибок валидации
+function removeValidationErrors(popupElement) {
+  const deleteValid = Array.from(popupElement.querySelectorAll(config.inputSelector));
+  deleteValid.forEach(function (item) {
+    hideInputError(popupElement, item);
+  });
+  setEventListeners(popupElement);
 }

@@ -14,6 +14,7 @@ const jobInput = formElementEdit.querySelector('.popup__input_data_job');
 const cardTemplate = document.querySelector('.card-template').content;
 const popupAdd = document.querySelector('.popup_type_add');
 const formElementAdd = document.querySelector('.popup__container_type_add');
+const formAddNewCards = document.getElementsByName('popup-form-add-new-card')[0];
 const titleInput = formElementAdd.querySelector('.popup__input_data_title');
 const photoInput = formElementAdd.querySelector('.popup__input_data_photo');
 //Переменные попапа для открытия фото
@@ -24,18 +25,15 @@ const popupSubtitle = popupCardPhoto.querySelector('.popup__subtitle');
 //ФУНКЦИЯ ДЛЯ ОТКРЫТИЯ ВСПЛЫВАЮЩЕГО ОКНА
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
-  enableValidation();
   document.addEventListener('keydown', closePopupByClickEsq);
+  document.addEventListener('mousedown', closePopupByClickOutPopup);
 }
 
 //ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ВСПЛЫВАЮЩЕГО ОКНА
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupByClickEsq);
-  const closePopupDeleteValid = Array.from(popupElement.querySelectorAll(config.inputSelector));
-  closePopupDeleteValid.forEach(function (item) {
-    hideInputError(popupElement, item);
-  });
+  document.removeEventListener('mousedown', closePopupByClickOutPopup);
 }
 
 //ФУНКЦИЯ ДЛЯ ОТПРАВКИ ДАННЫХ ПО КНОПКЕ СОХРАНИТЬ ПРИ ИЗМЕНЕНИИ ПРОФИЛЯ
@@ -123,8 +121,8 @@ function handleClickCard(evt) {
 
 //ФУНКЦИЯ ДЛЯ ЗАКРЫТИЯ ПОПАПОВ ПО КНОПКЕ ESC
 function closePopupByClickEsq(evt) {
-  const openedPopup = document.querySelector('.popup_opened'); // todo: нашли открытый попап
   if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened'); // todo: нашли открытый попап
     if (openedPopup) {
       closePopup(openedPopup);
     }
@@ -141,18 +139,17 @@ function closePopupByClickOutPopup(evt) {
   }
 }
 
-document.addEventListener('mousedown', closePopupByClickOutPopup);
-
 editProfileButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAboutMe.textContent;
   openPopup(popupEdit);
+  removeValidationErrors(popupEdit);
 });
 
 addNewCardButton.addEventListener('click', function () {
-  photoInput.value = '';
-  titleInput.value = '';
   openPopup(popupAdd);
+  formAddNewCards.reset();
+  removeValidationErrors(popupAdd);
 });
 
 closeButtons.forEach(function (button) {
