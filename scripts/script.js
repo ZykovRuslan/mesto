@@ -139,17 +139,24 @@ function closePopupByClickOutPopup(evt) {
   }
 }
 
+function disableSubmitButton(popupElement, config) {
+  const buttonElement = popupElement.querySelector(config.submitButtonSelector);
+  buttonElement.disabled = true;
+}
+
 editProfileButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAboutMe.textContent;
   openPopup(popupEdit);
-  removeValidationErrors(popupEdit);
+  removeValidationErrors(popupEdit, validationConfig);
+  disableSubmitButton(popupEdit, validationConfig);
 });
 
 addNewCardButton.addEventListener('click', function () {
   openPopup(popupAdd);
   formAddNewCards.reset();
-  removeValidationErrors(popupAdd);
+  removeValidationErrors(popupAdd, validationConfig);
+  disableSubmitButton(popupAdd, validationConfig);
 });
 
 closeButtons.forEach(function (button) {
