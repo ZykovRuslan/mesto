@@ -48,10 +48,18 @@ function renderCard(card) {
   galery.prepend(card);
 }
 
+function createCard(initialCard) {
+  const card = new Card({
+    ...initialCard,
+    selector: '.card-template',
+    callbackZoom: handleZoomCard,
+  });
+  renderCard(card.getElement());
+}
+
 function renderCardInitials() {
   initialCards.forEach(function (initialCard) {
-    const card = new Card({ ...initialCard, selector: '.card-template' });
-    renderCard(card.getElement());
+    createCard(initialCard);
   });
 }
 
@@ -60,24 +68,18 @@ renderCardInitials();
 //* функция для отправки данных по кнопке сохранить в добавление нового места
 function handleFormSubmitAddNewCard(evt) {
   evt.preventDefault();
-  const card = new Card({
-    name: titleInput.value,
-    link: photoInput.value,
-    selector: '.card-template',
-  });
-  renderCard(card.getElement());
+  createCard({ name: titleInput.value, link: photoInput.value });
   closePopup(popupAdd);
   evt.target.reset();
 }
 
 //* функция для увеличения фото в карточке
-function handleZoomCard(evt) {
+function handleZoomCard(evt, { name, link }) {
   const evtTarget = evt.target.closest('.card__photo');
-  //когда кликнули на удаление
   if (evtTarget) {
-    popupPhoto.src = evtTarget.src;
-    popupPhoto.alt = evtTarget.alt;
-    popupSubtitle.textContent = evtTarget.alt;
+    popupPhoto.src = link;
+    popupPhoto.alt = name;
+    popupSubtitle.textContent = name;
     openPopup(popupCardPhoto);
   }
 }
@@ -102,38 +104,19 @@ function closePopupByClickOutPopup(evt) {
   }
 }
 
-function disableSubmitButton(popupElement, config) {
-  const buttonElement = popupElement.querySelector(config.selectors.submitButton);
-  buttonElement.disabled = true;
-  buttonElement.classList.add(config.classNames.inactiveButton);
-}
-
-function removeValidationErrors(popupElement, config) {
-  const { classNames, selectors } = config;
-  const inputs = Array.from(popupElement.querySelectorAll(selectors.input));
-
-  inputs.forEach((input) => {
-    input.classList.remove(classNames.inputError);
-
-    const error = popupElement.querySelector(`.${input.id}-error`);
-    error.textContent = '';
-    error.classList.remove(classNames.error);
-  });
-}
-
 editProfileButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAboutMe.textContent;
   openPopup(popupEdit);
-  removeValidationErrors(popupEdit, validationConfig); //* публичный метод
-  disableSubmitButton(popupEdit, validationConfig); //* публичный метод
+  formEditValidator.disableSubmitButton(); //* публичный метод
+  formEditValidator.removeValidationErrors(); //* публичный метод
 });
 
 addNewCardButton.addEventListener('click', function () {
   openPopup(popupAdd);
   formAddNewCards.reset();
-  removeValidationErrors(popupAdd, validationConfig);
-  disableSubmitButton(popupAdd, validationConfig);
+  formAddValidator.disableSubmitButton(); //* публичный метод
+  formAddValidator.removeValidationErrors(); //* публичный метод
 });
 
 closeButtons.forEach(function (button) {
@@ -152,5 +135,3 @@ formEditValidator.enableValidation();
 formElementAdd.addEventListener('submit', handleFormSubmitAddNewCard);
 const formAddValidator = new FormValidator(validationConfig, formElementAdd);
 formAddValidator.enableValidation();
-
-galery.addEventListener('click', handleZoomCard);

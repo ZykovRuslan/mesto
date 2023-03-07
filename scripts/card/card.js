@@ -1,8 +1,9 @@
 export class Card {
-  constructor({ selector, name, link }) {
+  constructor({ selector, name, link, callbackZoom }) {
     this._element = this._cloneCard(selector);
     this._setCardData(name, link);
-
+    this._data = { name, link };
+    this._callbackZoom = callbackZoom;
     this._setEventListeners();
   }
 
@@ -60,6 +61,7 @@ export class Card {
       //! для сохранения контекста использовать только стрелочные функциии
       this._deleteCard(evt);
       this._handleLikeCard(evt);
+      this._callbackZoom(evt, this._data);
     });
   }
 }

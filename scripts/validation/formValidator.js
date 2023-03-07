@@ -6,7 +6,7 @@ export class FormValidator {
 
     this._form.addEventListener('input', (event) => {
       this._onInputHandler(event);
-      this._toggleButtonState();
+      this.toggleButtonState();
     });
   }
 
@@ -14,7 +14,7 @@ export class FormValidator {
     this._enable = true;
   }
 
-  _toggleButtonState() {
+  toggleButtonState() {
     const { classNames, selectors } = this._config;
     const button = this._form.querySelector(selectors.submitButton);
 
@@ -63,5 +63,25 @@ export class FormValidator {
         this._showInputError(target);
       }
     }
+  }
+
+  //* функция смены состояния кнопки сабмит
+  disableSubmitButton() {
+    const button = this._form.querySelector(this._config.selectors.submitButton);
+    button.disabled = true;
+    button.classList.add(this._config.classNames.inactiveButton);
+  }
+
+  //* функция удаления ошибок валидации
+  removeValidationErrors() {
+    const inputs = Array.from(this._form.querySelectorAll(this._config.selectors.input));
+
+    inputs.forEach((input) => {
+      input.classList.remove(this._config.classNames.inputError);
+
+      const error = this._form.querySelector(`.${input.id}-error`);
+      error.textContent = '';
+      error.classList.remove(this._config.classNames.error);
+    });
   }
 }

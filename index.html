@@ -38,11 +38,11 @@
   <div class="popup popup_type_edit">
     <div class="popup__container popup__container_type_edit">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="popup-form-edit-profile" novalidate>
+      <form class="popup__form" name="popup-form-edit-profile" autocomplete="off" novalidate>
         <fieldset class="popup__set">
           <label class="popup__field">
             <input type="text" required class="popup__input popup__input_data_name" placeholder="Имя профиля"
-              name="input-name" id="name-input" minlength="2" maxlength="40">
+              name="input-name" id="name-input" minlength="2" maxlength="40" autocomplete="off">
             <span class="popup__input-error name-input-error"></span>
           </label>
           <label class="popup__field">
@@ -61,7 +61,7 @@
   <div class="popup popup_type_add">
     <div class="popup__container popup__container_type_add">
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name="popup-form-add-new-card" novalidate>
+      <form class="popup__form" name="popup-form-add-new-card" autocomplete="off" novalidate>
         <fieldset class="popup__set">
           <label class="popup__field">
             <input type="text" required class="popup__input popup__input_data_title" placeholder="Название"
