@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Места России</title>
+</head>
+
+<body class="page">
+  <header class="header">
+    <img src="<%=require('./static/images/logo.svg')%>" class="header__logo" alt="Логотип Места России">
+  </header>
+
+  <main class="content">
+    <section class="profile">
+      <div class="profile__align">
+        <img src="<%=require('./static/images/avatar.jpg')%>" class="profile__avatar" alt="Аватар">
+        <div class="profile__info">
+          <div class="profile__row-top">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button opacity" aria-label="редактирование профиля" type="button"></button>
+          </div>
+          <p class="profile__about-me">Исследователь океана</p>
+        </div>
+      </div>
+      <button class="profile__add-button opacity" aria-label="добавление фотографии" type="button"></button>
+    </section>
+    <section aria-label="секция с картинками" class="galery">
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&#169; 2020. Mesto Russia</p>
+  </footer>
+
+  <!--Попап редактирования профиля-->
+  <div class="popup popup_type_edit">
+    <div class="popup__container popup__container_type_edit">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="popup-form-edit-profile" autocomplete="off" novalidate>
+        <fieldset class="popup__set">
+          <label class="popup__field">
+            <input type="text" required class="popup__input popup__input_data_name" placeholder="Имя профиля"
+              name="input-name" id="name-input" minlength="2" maxlength="40" autocomplete="off">
+            <span class="popup__input-error name-input-error"></span>
+          </label>
+          <label class="popup__field">
+            <input type="text" required class="popup__input popup__input_data_job" placeholder="Вид деятельности"
+              name="input-job" id="job-input" minlength="2" maxlength="200">
+            <span class="popup__input-error job-input-error"></span>
+          </label>
+          <button class="popup__submit-button" aria-label="сохранить" type="submit">Сохранить</button>
+        </fieldset>
+      </form>
+      <button class="popup__close-button opacity" aria-label="закрыть" type="button"></button>
+    </div>
+  </div>
+
+  <!--Попап добавления новой карточки-->
+  <div class="popup popup_type_add">
+    <div class="popup__container popup__container_type_add">
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" name="popup-form-add-new-card" autocomplete="off" novalidate>
+        <fieldset class="popup__set">
+          <label class="popup__field">
+            <input type="text" required class="popup__input popup__input_data_title" placeholder="Название"
+              name="input-title" id="title-input" minlength="2" maxlength="30">
+            <span class="popup__input-error title-input-error"></span>
+          </label>
+          <label class="popup__field">
+            <input type="url" required class="popup__input popup__input_data_photo" placeholder="Ссылка на картинку"
+              name="input-photo" id="url-input">
+            <span class="popup__input-error url-input-error"></span>
+          </label>
+          <button class="popup__submit-button" aria-label="сохранить" type="submit">Сохранить</button>
+        </fieldset>
+      </form>
+      <button class="popup__close-button opacity" aria-label="закрыть" type="button"></button>
+    </div>
+  </div>
+
+  <!--Попап для увеличения фото-->
+  <div class="popup popup_type_photo overlay">
+    <div class="popup__container popup__container_type_photo">
+      <button class="popup__close-button opacity" aria-label="закрыть" type="button"></button>
+      <img src="#" class="popup__photo" alt="#">
+      <p class="popup__subtitle"></p>
+    </div>
+  </div>
+
+  <!--Добавление новых карточек-->
+  <template class="card-template">
+    <article class="card">
+      <img src="#" class="card__photo" alt="#">
+      <button class="card__delete-button" aria-label="удалить" type="button"></button>
+      <div class="card__align">
+        <h2 class="card__title"></h2>
+        <button class="card__like-button" aria-label="нравится" type="button"></button>
+      </div>
+    </article>
+  </template>
+</body>
+
+</html>

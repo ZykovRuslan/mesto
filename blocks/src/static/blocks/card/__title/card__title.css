@@ -1,0 +1,11 @@
+.card__title {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+  padding-top: 3px;
+}

@@ -1,0 +1,39 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Проект включает знания полученные по 5 спринтам Яндекс Практикум по программе \"Web-разработчик\". В рамках текущего спринта применяем базовые знания js.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZykovRuslan/mesto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZykovRuslan/mesto/issues"
+  },
+  "homepage": "https://github.com/ZykovRuslan/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.3",
+    "cssnano": "^5.1.15",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.3",
+    "postcss-loader": "^7.0.2",
+    "webpack": "^5.76.1",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "core-js": "^3.29.1"
+  }
+}
