@@ -1,7 +1,0 @@
-.popup__container {
-  background: #fff;
-  border-radius: 10px;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-}
