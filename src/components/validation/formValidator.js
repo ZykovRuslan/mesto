@@ -3,7 +3,7 @@ export class FormValidator {
     this._config = config;
     this._form = form.querySelector(config.selectors.form);
     this._enable = false;
-
+    this._button = this._form.querySelector(this._config.selectors.submitButton);
     this._form.addEventListener('input', (event) => {
       this._onInputHandler(event);
       this.toggleButtonState();
@@ -15,15 +15,11 @@ export class FormValidator {
   }
 
   toggleButtonState() {
-    const { classNames, selectors } = this._config;
-    const button = this._form.querySelector(selectors.submitButton);
-
     if (!this._form.checkValidity() && this._enable) {
-      button.classList.add(classNames.inactiveButton);
-      button.disabled = true;
+      this.disableSubmitButton();
     } else {
-      button.classList.remove(classNames.inactiveButton);
-      button.disabled = false;
+      this._button.classList.remove(this._config.classNames.inactiveButton);
+      this._button.disabled = false;
     }
   }
 
@@ -67,9 +63,8 @@ export class FormValidator {
 
   //* функция смены состояния кнопки сабмит
   disableSubmitButton() {
-    const button = this._form.querySelector(this._config.selectors.submitButton);
-    button.disabled = true;
-    button.classList.add(this._config.classNames.inactiveButton);
+    this._button.disabled = true;
+    this._button.classList.add(this._config.classNames.inactiveButton);
   }
 
   //* функция удаления ошибок валидации
@@ -77,11 +72,7 @@ export class FormValidator {
     const inputs = Array.from(this._form.querySelectorAll(this._config.selectors.input));
 
     inputs.forEach((input) => {
-      input.classList.remove(this._config.classNames.inputError);
-
-      const error = this._form.querySelector(`.${input.id}-error`);
-      error.textContent = '';
-      error.classList.remove(this._config.classNames.error);
+      this._hideInputError(input);
     });
   }
 }

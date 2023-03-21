@@ -1,2 +1,2 @@
-export * from './formValidator.js';
+export * from './FormValidator.js';
 export * from './config.js';

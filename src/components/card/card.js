@@ -43,8 +43,8 @@ export class Card {
   //* метод удаления карточки
   _deleteCard(evt) {
     if (evt.target.classList.contains('card__delete-button')) {
-      const eventTarget = evt.target.closest('.card');
-      eventTarget.remove();
+      this._element.remove();
+      this._element = null;
     }
   }
 

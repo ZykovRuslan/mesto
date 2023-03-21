@@ -7,7 +7,7 @@ import {
   PopupWithImage,
   UserInfo,
   PopupWithForm,
-} from './components';
+} from '../components';
 import './index.css';
 
 const editProfileButton = document.querySelector('.profile__edit-button');
@@ -62,17 +62,22 @@ const createCard = (initialCard) => {
   section.addItem(card.getElement());
 };
 
-const section = new Section({ items: initialCards, renderer: createCard }, '.galery');
+const section = new Section({ renderer: createCard }, '.galery');
 
-section.renderItems();
+section.renderItems(initialCards);
 
 const formEditValidator = new FormValidator(validationConfig, formElementEdit);
 formEditValidator.enableValidation();
 
-editProfileButton.addEventListener('click', () => {
+//* получение данных с карточки пользователя в попап редактирования профиля
+function getUserInfoInPopup() {
   const userData = userInfo.getUserInfo();
   nameInput.value = userData.name;
   aboutInput.value = userData.about;
+}
+
+editProfileButton.addEventListener('click', () => {
+  getUserInfoInPopup();
   popupEditProfile.open();
   formEditValidator.disableSubmitButton();
   formEditValidator.removeValidationErrors();

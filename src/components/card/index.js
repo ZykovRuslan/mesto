@@ -1,2 +1,2 @@
 export * from './data.js';
-export * from './card.js';
+export * from './Card.js';

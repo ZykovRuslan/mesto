@@ -1,3 +1,3 @@
-export * from './popup';
-export * from './popupWithImage';
-export * from './popupWithForm';
+export * from './Popup';
+export * from './PopupWithImage';
+export * from './PopupWithForm';

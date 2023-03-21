@@ -1,5 +1,5 @@
 export * from './card';
 export * from './validation';
-export * from './section';
+export * from './section/Section';
 export * from './popup';
-export * from './userInfo/userInfo';
+export * from './userInfo/UserInfo';
