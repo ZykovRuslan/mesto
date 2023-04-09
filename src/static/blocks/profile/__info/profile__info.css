@@ -1,6 +1,7 @@
 .profile__info {
   width: 336px;
   margin-top: 22px;
+  margin-left: 30px;
   display: flex;
   flex-direction: column;
 }

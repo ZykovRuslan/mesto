@@ -7,8 +7,7 @@ export class PopupWithImage extends Popup {
     this._name = this._popup.querySelector('.popup__subtitle');
   }
 
-  open(evt, values) {
-    // console.log(values);
+  open(values) {
     super.open();
     this._link.src = values.link;
     this._link.alt = values.name;

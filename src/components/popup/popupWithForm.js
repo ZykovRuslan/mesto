@@ -24,8 +24,16 @@ export class PopupWithForm extends Popup {
     this._popupForm.addEventListener('submit', (evt) => {
       evt.preventDefault();
       const values = this._getInputValues();
-      this._callbackSibmitForm(values);
+      this.changeTextButton('Сохрание...');
+      this._callbackSibmitForm(values).then(() => this.changeTextButton('Сохранить'));
     });
+  }
+
+  changeTextButton(text) {
+    const button = this._popupForm.querySelector('.popup__submit-button');
+    if (button) {
+      button.textContent = text;
+    }
   }
 
   // перезаписывает родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.

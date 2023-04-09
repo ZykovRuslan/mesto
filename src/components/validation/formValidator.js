@@ -45,8 +45,10 @@ export class FormValidator {
     input.classList.remove(classNames.inputError);
 
     const error = this._form.querySelector(`.${input.id}-error`);
-    error.textContent = '';
-    error.classList.remove(classNames.error);
+    if (error) {
+      error.textContent = '';
+      error.classList.remove(classNames.error);
+    }
   }
 
   _onInputHandler(event) {
