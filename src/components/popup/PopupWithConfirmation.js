@@ -1,12 +1,12 @@
 import { Popup } from './Popup';
-import { actionDeleteCard } from '../../actions';
 
 export class PopupWithConfirmation extends Popup {
-  constructor(popupSelector) {
+  constructor(popupSelector, callbackActionDeleteCard) {
     super(popupSelector);
     this._popupForm = this._popup.querySelector('.popup__form');
     this._popupButton = this._popupForm.querySelector('.popup__submit-button');
     this._popupButtonTextContent = this._popupButton.textContent;
+    this._callbackActionDeleteCard = callbackActionDeleteCard;
   }
 
   setCardData(cardRef, id) {
@@ -24,10 +24,16 @@ export class PopupWithConfirmation extends Popup {
 
   async _handleSubmitCallback() {
     if (this._cardId && this._cardRef) {
-      const result = await actionDeleteCard(this._cardId);
-      if (result?.message === 'Пост удалён') {
-        this._cardRef.remove();
-        this._cardRef = null;
+      try {
+        const result = await this._callbackActionDeleteCard(this._cardId);
+        if (result?.message === 'Пост удалён') {
+          this._cardRef.remove();
+          this._cardRef = null;
+        }
+      } catch {
+        (err) => {
+          console.log(err);
+        };
       }
     }
     this.close();

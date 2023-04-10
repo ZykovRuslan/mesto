@@ -1,15 +1,7 @@
 import { api } from '../components/api';
 
-export const actionGetUserInfo = (onChange) => {
-  api.getUserInfo().then((result) => onChange(result));
-};
-
 export const actionSetUserInfo = (data) => {
   return api.setUserInfo(data);
-};
-
-export const actionGetInitialCards = (onRenderCards) => {
-  api.getInitialCards().then((result) => onRenderCards(result));
 };
 
 export const actionAddNewCard = (data) => {

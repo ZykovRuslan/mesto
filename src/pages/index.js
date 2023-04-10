@@ -16,7 +16,10 @@ import {
   actionSetUserInfo,
   actionAddNewCard,
   actionSetUserAvatar,
+  actionLikeCard,
+  actionDeleteCard,
 } from '../actions';
+import { api } from '../components/api';
 
 const editProfileButton = document.querySelector('.profile__edit-button');
 const addNewCardButton = document.querySelector('.profile__add-button');
@@ -54,8 +57,14 @@ async function handleFormSubmitEditProfile(values) {
 
   const result = await actionSetUserInfo(data);
   if (result._id) {
-    userInfo.setUserInfo(result);
-    popupEditProfile.close();
+    try {
+      userInfo.setUserInfo(result);
+      popupEditProfile.close();
+    } catch {
+      (err) => {
+        console.log(err);
+      };
+    }
   }
 }
 
@@ -71,8 +80,14 @@ async function handleFormSubmitEditAvatar(values) {
   };
   const result = await actionSetUserAvatar(data);
   if (result.avatar) {
-    userInfo.setUserInfo(result);
-    popupEditAvatar.close();
+    try {
+      userInfo.setUserInfo(result);
+      popupEditAvatar.close();
+    } catch {
+      (err) => {
+        console.log(err);
+      };
+    }
   }
 }
 
@@ -83,7 +98,9 @@ editAvatarButton.addEventListener('click', () => {
   formEditAvatarValidator.removeValidationErrors();
 });
 
-const popupWithConfirmation = new PopupWithConfirmation('.popup_type_confirmation');
+const popupWithConfirmation = new PopupWithConfirmation('.popup_type_confirmation', (id) =>
+  actionDeleteCard(id),
+);
 popupWithConfirmation.setEventListeners();
 
 const popupAddCard = new PopupWithForm('.popup_type_add', handleFormSubmitAddNewCard);
@@ -93,8 +110,14 @@ popupAddCard.setEventListeners();
 async function handleFormSubmitAddNewCard() {
   const result = await actionAddNewCard({ name: titleInput.value, link: photoInput.value });
   if (result?._id) {
-    createCard(result);
-    popupAddCard.close();
+    try {
+      createCard(result);
+      popupAddCard.close();
+    } catch {
+      (err) => {
+        console.log(err);
+      };
+    }
   }
 }
 
@@ -110,6 +133,7 @@ const createCard = (initialCard) => {
       popupWithConfirmation.open();
       popupWithConfirmation.setCardData(ref, id);
     },
+    callbackActionLikeCard: (id, hasLike) => actionLikeCard(id, hasLike),
   });
   section.addItem(card.getElement());
 };
@@ -143,6 +167,10 @@ addNewCardButton.addEventListener('click', () => {
   formAddNewCardValidator.removeValidationErrors();
 });
 
-actionGetUserInfo((props) => userInfo.setUserInfo(props));
-
-actionGetInitialCards((cards) => section.renderItems(cards));
+api
+  .getAllData()
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(userData);
+    section.renderItems(cards);
+  })
+  .catch((err) => console.log(err));

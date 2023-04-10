@@ -57,6 +57,10 @@ export default class Api {
   setUserAvatar(data) {
     return this._fetch(`/users/me/avatar`, 'PATCH', data);
   }
+
+  getAllData() {
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
+  }
 }
 
 export const api = new Api({

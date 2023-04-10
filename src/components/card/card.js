@@ -1,12 +1,21 @@
-import { actionLikeCard, actionDeleteCard } from '../../actions';
-
 export class Card {
-  constructor({ selector, name, link, userId, callbackZoom, callbackConfirmation, ...props }) {
+  constructor({
+    selector,
+    name,
+    link,
+    userId,
+    callbackZoom,
+    callbackConfirmation,
+    callbackActionLikeCard,
+    ...props
+  }) {
     this._userId = userId;
     this._element = this._cloneCard(selector, { name, link });
 
     const hasLike = this._checkLikeById(props.likes || []);
     this._data = { name, link, hasLike, ...props };
+    this.btnLike = this._element.querySelector('.card__like-button');
+    this.counter = this._element.querySelector('.card__counter');
 
     this._setCardData(this._data);
 
@@ -16,6 +25,8 @@ export class Card {
 
     this._cardButtonDelete = this._element.querySelector('.card__delete-button');
     this._removeBtnDeleteCard();
+
+    this._callbackActionLikeCard = callbackActionLikeCard;
   }
 
   //* публичный метод, для получения dom элемента карточки
@@ -33,7 +44,7 @@ export class Card {
   _setCardData(data) {
     this._setTitleData(data);
     this._setImageData(data);
-    this._setLikeData(data);
+    this._setLikeData(data); //() =>
   }
 
   _setImageData({ name, link }) {
@@ -55,19 +66,17 @@ export class Card {
   _setLikeData({ hasLike, likes }) {
     this._data = { ...this._data, hasLike };
     // Отрисовка like
-    const btnLike = this._element.querySelector('.card__like-button');
-    if (btnLike) {
+    if (this.btnLike) {
       if (hasLike) {
-        btnLike.classList.add('card__like-button_active');
+        this.btnLike.classList.add('card__like-button_active');
       } else {
-        btnLike.classList.remove('card__like-button_active');
+        this.btnLike.classList.remove('card__like-button_active');
       }
     }
-    const counter = this._element.querySelector('.card__counter');
-    if (counter && likes.length) {
-      counter.textContent = likes.length;
+    if (this.counter && likes.length) {
+      this.counter.textContent = likes.length;
     } else {
-      counter.textContent = '';
+      this.counter.textContent = '';
     }
   }
 
@@ -98,9 +107,15 @@ export class Card {
   async _handleClickLike(evt) {
     const buttonLike = evt.target;
     if (buttonLike.classList.contains('card__like-button')) {
-      const result = await actionLikeCard(this._data._id, this._data.hasLike);
-      const hasLike = this._checkLikeById(result.likes || []);
-      this._setLikeData({ hasLike, likes: result?.likes || [] });
+      try {
+        const result = await this._callbackActionLikeCard(this._data._id, this._data.hasLike);
+        const hasLike = this._checkLikeById(result.likes || []);
+        this._setLikeData({ hasLike, likes: result?.likes || [] });
+      } catch {
+        (err) => {
+          console.log(err);
+        };
+      }
     }
   }
 

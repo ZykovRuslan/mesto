@@ -6,6 +6,7 @@ export class PopupWithForm extends Popup {
     this._callbackSibmitForm = callbackSibmitForm;
     this._popupForm = this._popup.querySelector('.popup__form');
     this._inputList = this._popupForm.querySelectorAll('.popup__input');
+    this._button = this._popupForm.querySelector('.popup__submit-button');
   }
 
   // метод который собирает данные всех полей формы.
@@ -25,14 +26,13 @@ export class PopupWithForm extends Popup {
       evt.preventDefault();
       const values = this._getInputValues();
       this.changeTextButton('Сохрание...');
-      this._callbackSibmitForm(values).then(() => this.changeTextButton('Сохранить'));
+      this._callbackSibmitForm(values).finally(() => () => this.changeTextButton('Сохранить'));
     });
   }
 
   changeTextButton(text) {
-    const button = this._popupForm.querySelector('.popup__submit-button');
-    if (button) {
-      button.textContent = text;
+    if (this._button) {
+      this._button.textContent = text;
     }
   }
 

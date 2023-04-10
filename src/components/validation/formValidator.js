@@ -8,6 +8,7 @@ export class FormValidator {
       this._onInputHandler(event);
       this.toggleButtonState();
     });
+    this._inputs = Array.from(this._form.querySelectorAll(this._config.selectors.input));
   }
 
   enableValidation() {
@@ -71,9 +72,7 @@ export class FormValidator {
 
   //* функция удаления ошибок валидации
   removeValidationErrors() {
-    const inputs = Array.from(this._form.querySelectorAll(this._config.selectors.input));
-
-    inputs.forEach((input) => {
+    this._inputs.forEach((input) => {
       this._hideInputError(input);
     });
   }
