@@ -44,7 +44,7 @@ export class Card {
   _setCardData(data) {
     this._setTitleData(data);
     this._setImageData(data);
-    this._setLikeData(data); //() =>
+    this._setLikeData(data);
   }
 
   _setImageData({ name, link }) {
